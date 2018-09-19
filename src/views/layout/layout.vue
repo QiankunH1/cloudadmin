@@ -18,8 +18,8 @@
         <el-menu-item-group>
           <el-menu-item index="add">添加管理员</el-menu-item>
           <el-menu-item index="list">管理员列表</el-menu-item>
-          <el-menu-item index="1-3">修改密码</el-menu-item>
-          <el-menu-item index="3-4">修改个人信息</el-menu-item>
+          <el-menu-item index="repassword">修改密码</el-menu-item>
+          <el-menu-item index="amend">修改个人信息</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
 

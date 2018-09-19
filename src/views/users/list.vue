@@ -13,9 +13,14 @@
                 stripe
                 style="width: 100%">
                 <el-table-column
-                prop="nickname"
+                prop="username"
                 label="姓名"
-                width="130"> 
+                width="130">    
+                </el-table-column>
+                <el-table-column
+                prop="nickname"
+                label="昵称"
+                width="130">    
                 </el-table-column>
                 <el-table-column
                 prop="createdTime"
@@ -27,6 +32,7 @@
                 label="个性签名"
                 width="400">
                 </el-table-column>
+
                 <el-table-column
             
                 label="用户头像"
@@ -41,7 +47,16 @@
                     </template>
                 </el-table-column>
             </el-table>
-        </template>  
+        </template> 
+        <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="1000"
+            :page-size=5
+            :pager-count=7
+            @current-change='currentChange'
+            >
+        </el-pagination>
     </div>
 </template>
  
@@ -49,15 +64,19 @@
     export default {
         data(){
             return{
-              tableData:[]  
+              tableData:[] ,
+              page:1,
+              count:0
+
             }
         },
         name:"index",
         methods:{
             getData(){
-                this.$axios.get('/user').then(res=>{
-                    // console.log(res)
+                this.$axios.get('/user',{pn:this.page,size:5}).then(res=>{
+                    console.log(res)
                     if(res.code==200){
+                        this.count=res.count
                         this.tableData=res.data
                     }
                 })
@@ -75,7 +94,11 @@
                         }
                     }) 
                 })
-        }
+             },
+           currentChange(event){
+              this.page=event
+              this.getData()
+           }
         },
         created(){
             this.getData()

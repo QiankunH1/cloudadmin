@@ -9,8 +9,11 @@ const components ={
   index: ()=>import("@/views/index/index"),
   list: ()=>import("@/views/users/list"),
   add:()=>import("@/views/users/add"),
+  amend:()=>import("@/views/users/amend"),
+  repassword:()=>import("@/views/users/repassword"),
   test:()=>import("@/views/testUploadDemo/test"),
   ajax:()=>import("@/views/testUploadDemo/ajax"),
+  upload:()=>import("@/views/testUploadDemo/upload-com"),
 }
 
 export default new Router({
@@ -47,6 +50,20 @@ export default new Router({
         component:components.add
         },
         {
+        path:'repassword',
+        meta:{
+          title:'修改密码'
+        },
+        component:components.repassword
+        },
+        {
+        path:'amend',
+        meta:{
+          title:'修改密码'
+        },
+        component:components.amend
+        },
+        {
           path:'test',
           meta:{
             title:'传统文件上传'
@@ -59,6 +76,13 @@ export default new Router({
             title:'ajax文件上传'
           },
           component:components.ajax
+          },
+        {
+          path:'upload',
+          meta:{
+            title:'ajax文件上传'
+          },
+          component:components.upload
           },
     ]
     },

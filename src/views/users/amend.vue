@@ -1,5 +1,6 @@
 <template>
     <div class="main">
+        <h4>上传您的头像</h4>
         <div class="add-img">
             <el-upload
                 class="avatar-uploader"
@@ -12,40 +13,33 @@
             </el-upload>
         </div>
         <div class="text">
-            <h3>姓名:</h3>
             <h3>昵称:</h3>
             <h3>邮箱:</h3>
-            <h3>密码:</h3>
-            <h3>确认密码:</h3>
             <h3>描述:</h3>
         </div>
         <div class="input">
-            <el-input class="input-text" v-model="formData.username" placeholder="请输入姓名"></el-input>
             <el-input class="input-text" v-model="formData.nickname" placeholder="请输入昵称"></el-input>
             <el-input class="input-text" v-model="formData.email" placeholder="请输入邮箱"></el-input>
-            <el-input class="input-text" v-model="formData.password" placeholder="请输入密码"></el-input>
-            <el-input class="input-text" v-model="formData.repassword" placeholder="请确认密码"></el-input>
             <el-input class="input-text" v-model="formData.desc" placeholder="请输入描述"></el-input>
         </div>
         <div>
             <el-row class="btn">
-                <el-button class="sign" type="primary"  @click="sign" >注册</el-button>
-                <el-button class="reset">重置</el-button>     
+                <el-button class="sign" type="primary"  @click="amend" >确认修改</el-button>  
             </el-row>
         </div>
 </div>
 </template>
 
 <script>
+
     export default {
+
+        name:"amend",
         data(){
             return{
             formData:{
-                username:"",
                 nickname:"",
                 email:"",
-                password:"",
-                repassword:"",
                 desc:"",
                 avatar:""
                 },
@@ -61,21 +55,14 @@
                 console.log("hahahhaaaaa")
                 console.log(res)
                 this.imageUrl =res.url;
-                this.formData.avatar=res.url;
+                this.formData.avatar =res.url;
             },
-           
-            sign(){
-                if(this.formData.password!=this.formData.repassword){
-                     this.$message.error('两次输入的密码不一致，请重新输入')
-                }else{
-                    console.log(this.formData)
-                     this.$axios.post('/user',this.formData).then(res=>{
-                    if(res.code==200){
-                      this.$message.success('恭喜你注册成功')
-                    }else{
-                        this.$message.error(res.msg)}
-                  })  
-                }
+         
+            amend(){
+                this.$axios.put('/user/userInfo',this.formData).then(res=>{
+                    console.log("aaa")
+                    this.$message("修改成功")
+                })
             },
             getToken(){
                 this.$axios.get("http://upload.yaojunrong.com/getToken",).then(res=>{
