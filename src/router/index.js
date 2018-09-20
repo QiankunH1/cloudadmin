@@ -14,6 +14,10 @@ const components ={
   test:()=>import("@/views/testUploadDemo/test"),
   ajax:()=>import("@/views/testUploadDemo/ajax"),
   upload:()=>import("@/views/testUploadDemo/upload-com"),
+  sortlist:()=>import("@/views/sortmanger/sortlist"),
+  addsort:()=>import("@/views/sortmanger/addsort"),
+  booklist:()=>import("@/views/bookmanger/booklist"),
+  addbook:()=>import("@/views/bookmanger/addbook"),
 }
 
 export default new Router({
@@ -80,9 +84,37 @@ export default new Router({
         {
           path:'upload',
           meta:{
-            title:'ajax文件上传'
+            title:'图片上传封装'
           },
           component:components.upload
+          },
+        {
+          path:'sortlist',
+          meta:{
+            title:'分类列表'
+          },
+          component:components.sortlist
+          },
+        {
+          path:'addsort',
+          meta:{
+            title:'添加分类'
+          },
+          component:components.addsort
+          },
+        {
+          path:'booklist',
+          meta:{
+            title:'图书列表'
+          },
+          component:components.booklist
+          },
+        {
+          path:'addbook',
+          meta:{
+            title:'添加图书'
+          },
+          component:components.addbook
           },
     ]
     },

@@ -29,8 +29,8 @@
           <span>分类管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="2-1">分类列表</el-menu-item>
-          <el-menu-item index="2-2">添加分类</el-menu-item>
+          <el-menu-item index="sortlist">分类列表</el-menu-item>
+          <el-menu-item index="addsort">添加分类</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       
@@ -42,8 +42,8 @@
           <span>图书管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="3-1">图书列表</el-menu-item>
-          <el-menu-item index="3-2">添加图书</el-menu-item>
+          <el-menu-item index="booklist">图书列表</el-menu-item>
+          <el-menu-item index="addbook">添加图书</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="4">
@@ -107,7 +107,7 @@
 }
 
 .main-content{
-    padding-left: 200px;
+    padding-left: 100px;
 }
 .el-menu{
       border-right:none;

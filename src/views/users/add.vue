@@ -58,6 +58,7 @@
         },
          methods: {
             handleAvatarSuccess(res, file) {
+                
                 console.log("hahahhaaaaa")
                 console.log(res)
                 this.imageUrl =res.url;
